@@ -1,4 +1,4 @@
-package Hangman_Web
+package main
 
 import (
 	"net/http"
@@ -11,6 +11,10 @@ func Home(w http.ResponseWriter, r *http.Request) {
 
 func About(w http.ResponseWriter, r *http.Request) {
 	renderTemplate(w, "about")
+}
+
+func Hangman(w http.ResponseWriter, r *http.Request) {
+	renderTemplate(w, "hangman")
 }
 
 func renderTemplate(w http.ResponseWriter, tmpl string) {
