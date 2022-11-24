@@ -39,14 +39,14 @@ background-position: center;
 header.hangman {
   background-image: url(/css/image/tableaucraie.jpg);
 height: 50vh;
-width: 100vw;
+width: 75vw;
 background-size: cover;
 }
 
 .navbar{
 display: flex;
-width: 60%;
-height: 100%;
+width: 80%;
+height: 60%;
 background-color: white;
 padding: 1rem 2rem;
 justify-content: center;
@@ -71,7 +71,7 @@ border-color: white;
 .navbar{
   display: flex;
   width: 100%;
-  height: 50%;
+  height: 100%;
   background-color: white;
   padding: 1rem 2rem;
   justify-content: center;
