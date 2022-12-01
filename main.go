@@ -15,4 +15,5 @@ func main() {
 	fmt.Println("http://localhost:3000 - Server started on port :3000")
 
 	http.ListenAndServe(port, nil)
+
 }
