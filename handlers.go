@@ -17,6 +17,10 @@ func Hangman(w http.ResponseWriter, r *http.Request) {
 	renderTemplate(w, "hangman")
 }
 
+func Rules(w http.ResponseWriter, r *http.Request) {
+	renderTemplate(w, "rules")
+}
+
 func renderTemplate(w http.ResponseWriter, tmpl string) {
     t, err := template.ParseFiles("./html/template/" + tmpl + ".html")
     if err != nil {
