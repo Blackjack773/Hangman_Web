@@ -11,36 +11,22 @@
 </head>
 <body>
     <div class="container" >
-    <img  class="bureau"src="css/image/tableaucraie.jpg" ;>
-        {{define "hangmanPos1"}}
-            <img  class="bureau"src="css/image/tableaucraiePos1.jpg" ;>
-        {{end}}
-        {{define "hangmanPos2"}}
-            <img  class="bureau"src="css/image/tableaucraiePos2.jpg" ;>
-        {{end}}
-        {{define "hangmanPos3"}}
-            <img  class="bureau"src="css/image/tableaucraiePos3.jpg" ;>
-        {{end}}
-        {{define "hangmanPos4"}}
-            <img  class="bureau"src="css/image/tableaucraiePos4.jpg" ;>
-        {{end}}
-        {{define "hangmanPos5"}}
-            <img  class="bureau"src="css/image/tableaucraiePos5.jpg" ;>
-        {{end}}
-        {{define "hangmanPos6"}}
-            <img  class="bureau"src="css/image/tableaucraiePos6.jpg" ;>
-        {{end}}
-        {{define "hangmanPos7"}}
-            <img  class="bureau"src="css/image/tableaucraiePos7.jpg" ;>
-        {{end}}
-        {{define "hangmanPos8"}}
-            <img  class="bureau"src="css/image/tableaucraiePos8.jpg" ;>
-        {{end}}
-        {{define "hangmanPos9"}}
-            <img  class="bureau"src="css/image/tableaucraiePos9.jpg" ;>
-        {{end}}
-        {{define "hangmanPos10"}}
-            <img  class="bureau"src="css/image/tableaucraiePos10.jpg" ;>
+
+        <img  class="bureau" src="css/image/{{.ImageName}}.jpg" >
+
+
+        {{if .IsCorrect}}
+            {{if .BeginGame}}
+
+            {{else}}
+            <div class="content">
+                <p style="color:white; font-family:chalktastic">Lettre correcte</p>
+            <div/>
+            {{end}}
+        {{else}}
+                <div class="content">
+                    <p style="color:white; font-family:chalktastic">Lettre incorrect</p>
+                    <div/>
         {{end}}
 
         <nav class="navbar_hangman">
@@ -52,14 +38,26 @@
                 <li><a href="rules"> <p style="font-family:chalktastic"> Rules </p> </a></li>
                 <li><a href="https://www.google.fr/">  <p style="font-family:chalktastic"> Exit </p> </a></li>
                 </ul>
-        </div>
+            </div>
         </nav>
+        <H1><p>{{.WordToFind}}</p></H1>
+
+                    {{if .EndGame}}
+                        {{if .Won}}
+                            <a href="win">
+                        {{else}}
+                                <a href="lose">
+                        {{end}}
+                    {{end}}
+
+
+
         <input class="c-checkbox" type="checkbox" id="checkbox">
         <div class="c-formContainer">
-            <form class="c-form" action="" method="post">
-                <input class="c-form__input" type="text" name="letter" placeholder="Saisir une lettre / mot" pattern="[A-Za-z]{1,60}$" required>
+            <form class="c-form" action="/temp" method="POST">
+                <input class="c-form__input" type="text" name="letter" placeholder="Saisir une lettre / mot" pattern="[A-Za-z]{1}$" required>
                 <label class="c-form__buttonLabel" for="checkbox">
-                    <button class="c-form__button" type="button"> <p style="font-family:chalktastic">Tester</p></button>
+                    <button class="c-form__button" type=""> <p style="font-family:chalktastic">Tester</p></button>
                 </label>
                 <label class="c-form__toggle" for="checkbox" data-title="Lettre / Mots a saisir"></label>
             </form>
