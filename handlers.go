@@ -36,6 +36,9 @@ func Rules(w http.ResponseWriter, r *http.Request) {
 
 func Temp(w http.ResponseWriter, r *http.Request) {
 	lettre := r.FormValue("letter")
+	if goodLetter() {
+
+	}
 
 	tpl.ExecuteTemplate(w, "hangman", lettre)
 }
