@@ -15,19 +15,7 @@
         <img  class="bureau" src="css/image/{{.ImageName}}.jpg" >
 
 
-        {{if .IsCorrect}}
-            {{if .BeginGame}}
-
-            {{else}}
-            <div class="content">
-                <p style="color:white; font-family:chalktastic">Lettre correcte</p>
-            <div/>
-            {{end}}
-        {{else}}
-                <div class="content">
-                    <p style="color:white; font-family:chalktastic">Lettre incorrect</p>
-                    <div/>
-        {{end}}
+        
 
         <nav class="navbar_hangman">
             <a href="#" class="logo"> <p style="font-family:chalktastic"> HANGMAN </p> </a>
@@ -40,7 +28,6 @@
                 </ul>
             </div>
         </nav>
-        <H1><p>{{.WordToFind}}</p></H1>
 
                     {{if .EndGame}}
                         {{if .Won}}
@@ -60,8 +47,48 @@
                     <button class="c-form__button" type=""> <p style="font-family:chalktastic">Tester</p></button>
                 </label>
                 <label class="c-form__toggle" for="checkbox" data-title="Lettre / Mots a saisir"></label>
-            </form>
+            </form> 
         </div>
+        
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        {{if .IsCorrect}}
+        {{if .BeginGame}}
+
+        {{else}}
+        <div class="content">
+            <p style="color:white; font-family:chalktastic; margin-left: 950px; font-size: 30px;">Lettre correcte</p>
+        <div/>
+        {{end}}
+    {{else}}
+            <div class="content">
+                <p style="color:white; font-family:chalktastic; margin-left: 950px; font-size: 30px;">Lettre incorrect</p>
+                <div/>
+    {{end}}
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        
+        <H1 style="color: white; margin-left: 400px; font-size: 50px;"><p>{{.WordToFind}}</p></H1>
     </div>
 
 
