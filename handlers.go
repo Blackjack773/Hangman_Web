@@ -34,6 +34,12 @@ func Rules(w http.ResponseWriter, r *http.Request) {
 	renderTemplate(w, "rules")
 }
 
+func Temp(w http.ResponseWriter, r *http.Request) {
+	lettre := r.FormValue("letter")
+
+	tpl.ExecuteTemplate(w, "hangman", lettre)
+}
+
 func renderTemplate(w http.ResponseWriter, tmpl string) {
 	t, err := template.ParseFiles("./html/template/" + tmpl + ".html")
 	if err != nil {
