@@ -1,3 +1,8 @@
 Pour Run le projet:
+    go run .
 
-go run .
+Lors de la partie de jeu:
+    Appuyez deux fois dans la barre pour deviner une lettre
+    appuyez sur ENTRER pour valider
+
+    Pour voir la page WIN ou LOSE il faut re-cliquer sur la barre
