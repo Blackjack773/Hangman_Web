@@ -65,7 +65,6 @@ func guessLetterChange(tabIndex []int, Hangman *HangmanStructure.HangmanData) bo
 func IsLetterCorrect(letterVerify string, Hangman *HangmanStructure.HangmanData) bool {
 	for i := 0; i < len(repeatLetters); i++ {
 		if repeatLetters[i] == letterVerify {
-			fmt.Println(RGB.RGB_Text(255, 0, 0, "This letter has already been guessed !"))
 			return false
 		}
 	}

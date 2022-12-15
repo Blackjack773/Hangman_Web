@@ -10,22 +10,22 @@ import (
 )
 
 var (
-	newString string
-	attempts  int
-	isCorrect bool = true
-	beginGame bool = true
-	endGame   bool = false
-	won       bool = false
+	printHidenWord string
+	attempts       int
+	correctLetter  bool = true
+	startGame      bool = true
+	endGame        bool = false
+	won            bool = false
 )
 
-type indexPageData struct {
-	WordToFind string
-	Attempts   int
-	ImageName  string
-	IsCorrect  bool
-	BeginGame  bool
-	EndGame    bool
-	Won        bool
+type gameStruct struct {
+	WordToFind  string
+	Attempts    int
+	NumberOfPos string
+	IsCorrect   bool
+	BeginGame   bool
+	EndGame     bool
+	Won         bool
 }
 
 var tpl *template.Template
@@ -43,23 +43,23 @@ var hangman = new(HangmanStructure.HangmanData)
 func Hangman(w http.ResponseWriter, r *http.Request) {
 
 	template := template.Must(template.ParseFiles("html/template/hangman.html"))
-	newString = ""
+	printHidenWord = ""
 	for _, letter := range hangman.GetWord() {
-		newString += letter
+		printHidenWord += letter
 	}
-	if newString == hangman.GetWordToFind() {
+	if printHidenWord == hangman.GetWordToFind() {
 		endGame = true
 		won = true
 	}
 
-	data := indexPageData{
-		WordToFind: newString,
-		Attempts:   10 - attempts,
-		ImageName:  strconv.Itoa(attempts),
-		IsCorrect:  isCorrect,
-		BeginGame:  beginGame,
-		EndGame:    endGame,
-		Won:        won,
+	data := gameStruct{
+		WordToFind:  printHidenWord,
+		Attempts:    10 - attempts,
+		NumberOfPos: strconv.Itoa(attempts),
+		IsCorrect:   correctLetter,
+		BeginGame:   startGame,
+		EndGame:     endGame,
+		Won:         won,
 	}
 	template.Execute(w, data)
 }
@@ -86,14 +86,14 @@ func Temp(w http.ResponseWriter, r *http.Request) {
 
 	if !UserInput.IsLetterCorrect(letter, hangman) {
 		attempts += 1
-		isCorrect = false
-		beginGame = false
+		correctLetter = false
+		startGame = false
 		if attempts == 10 {
 			endGame = true
 		}
 	} else {
-		isCorrect = true
-		beginGame = false
+		correctLetter = true
+		startGame = false
 	}
 	http.Redirect(w, r, r.Header.Get("Referer"), http.StatusFound)
 }
