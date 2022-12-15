@@ -104,3 +104,8 @@ a:hover {
   text-decoration: none;
   cursor: pointer;
 }
+
+.guess {
+  display: flex;
+  align-items: flex-end;
+}
