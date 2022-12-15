@@ -68,18 +68,18 @@
         <br>
         <br>
         {{if .IsCorrect}}
-        {{if .BeginGame}}
+            {{if .BeginGame}}
 
+            {{else}}
+                <div class="content">
+                    <p style="color:white; font-family:chalktastic; margin-left: 950px; font-size: 30px;">Lettre correcte</p>
+                <div/>
+            {{end}}
         {{else}}
-        <div class="content">
-            <p style="color:white; font-family:chalktastic; margin-left: 950px; font-size: 30px;">Lettre correcte</p>
-        <div/>
-        {{end}}
-    {{else}}
             <div class="content">
                 <p style="color:white; font-family:chalktastic; margin-left: 950px; font-size: 30px;">Lettre incorrect</p>
                 <div/>
-    {{end}}
+        {{end}}
         <br>
         <br>
         <br>
