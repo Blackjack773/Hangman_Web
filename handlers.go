@@ -9,17 +9,17 @@ import (
 	"text/template"
 )
 
-<<<<<<< Updated upstream
-var (
+var ( // variables du jeu
 	printHidenWord string
 	attempts       int
 	correctLetter  bool = true
 	startGame      bool = true
 	endGame        bool = false
 	won            bool = false
+	hangman             = new(HangmanStructure.HangmanData)
 )
 
-type gameStruct struct {
+type gameStruct struct { // structure des paramètres de jeu
 	WordToFind  string
 	Attempts    int
 	NumberOfPos string
@@ -27,25 +27,6 @@ type gameStruct struct {
 	BeginGame   bool
 	EndGame     bool
 	Won         bool
-=======
-var ( // variables du jeu
-	newString string 
-	attempts  int
-	isCorrect bool = true
-	beginGame bool = true
-	endGame   bool = false
-	won       bool = false
-)
-
-type indexPageData struct { // structure des paramètres de jeu
-	WordToFind string
-	Attempts   int
-	ImageName  string
-	IsCorrect  bool
-	BeginGame  bool
-	EndGame    bool
-	Won        bool
->>>>>>> Stashed changes
 }
 
 var tpl *template.Template
@@ -58,47 +39,26 @@ func About(w http.ResponseWriter, r *http.Request) { //renvoies à la page d'Inf
 	renderTemplate(w, "about")
 }
 
-var hangman = new(HangmanStructure.HangmanData) // initialisation des variables du jeu
-
 func Hangman(w http.ResponseWriter, r *http.Request) { //renvoies à la page de Jeu
 
 	template := template.Must(template.ParseFiles("html/template/hangman.html"))
-<<<<<<< Updated upstream
 	printHidenWord = ""
-	for _, letter := range hangman.GetWord() {
+	for _, letter := range hangman.GetWord() { // ajout de lettre
 		printHidenWord += letter
 	}
-	if printHidenWord == hangman.GetWordToFind() {
-=======
-	newString = ""
-	for _, letter := range hangman.GetWord() { // ajout de lettre 
-		newString += letter
-	}
-	if newString == hangman.GetWordToFind() { // Fin de la partie, victoire ou défaite
->>>>>>> Stashed changes
+	if printHidenWord == hangman.GetWordToFind() { // Fin de la partie, victoire ou défaite
 		endGame = true
 		won = true
 	}
 
-<<<<<<< Updated upstream
-	data := gameStruct{
-		WordToFind:  printHidenWord,
-		Attempts:    10 - attempts,
-		NumberOfPos: strconv.Itoa(attempts),
-		IsCorrect:   correctLetter,
-		BeginGame:   startGame,
-		EndGame:     endGame,
-		Won:         won,
-=======
-	data := indexPageData{ // la variable data prend en compte la struct de jeu
-		WordToFind: newString, // mot à deviner
-		Attempts:   10 - attempts, //nb d'essais
-		ImageName:  strconv.Itoa(attempts), // image du pendu
-		IsCorrect:  isCorrect, // est-ce que la lettre devinée est correcte
-		BeginGame:  beginGame, // Commencement de la partie
-		EndGame:    endGame, // Fin de la partie
-		Won:        won, // Victoire ou Défaite
->>>>>>> Stashed changes
+	data := gameStruct{ // la variable data prend en compte la struct de jeu
+		WordToFind:  printHidenWord,         // mot à deviner
+		Attempts:    10 - attempts,          //nb d'essais
+		NumberOfPos: strconv.Itoa(attempts), //  numero  pos image pendu
+		IsCorrect:   correctLetter,          // est-ce que la lettre devinée est correcte
+		BeginGame:   startGame,              // Commencement de la partie
+		EndGame:     endGame,                // Fin de la partie
+		Won:         won,                    // Victoire ou Défaite
 	}
 	template.Execute(w, data)
 }
@@ -137,7 +97,7 @@ func Temp(w http.ResponseWriter, r *http.Request) { // page de chargement tempor
 	http.Redirect(w, r, r.Header.Get("Referer"), http.StatusFound)
 }
 
-func renderTemplate(w http.ResponseWriter, tmpl string) { // Parser fichier
+func renderTemplate(w http.ResponseWriter, tmpl string) { // Parser fichie
 	t, err := template.ParseFiles("./html/template/" + tmpl + ".html")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -145,4 +105,3 @@ func renderTemplate(w http.ResponseWriter, tmpl string) { // Parser fichier
 	}
 	t.Execute(w, nil)
 }
-
